@@ -2,7 +2,5 @@
 <resources>
 
     <style name="Theme.Fetcher" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 </resources>

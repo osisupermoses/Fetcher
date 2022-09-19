@@ -7,11 +7,7 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.crop2cash.fetcher.presentation.ui.exhibit_listings.NavGraphs
 import com.crop2cash.fetcher.presentation.theme.FetcherTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
@@ -24,10 +20,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        installSplashScreen().setKeepOnScreenCondition {
-            !mainViewModel.isLoading
-        }
 
         setContent {
             FetcherTheme(
@@ -42,18 +34,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    FetcherTheme {
-        Greeting("Android")
     }
 }

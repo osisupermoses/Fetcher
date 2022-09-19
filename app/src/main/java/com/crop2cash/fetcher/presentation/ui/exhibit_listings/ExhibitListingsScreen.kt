@@ -14,7 +14,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.crop2cash.fetcher.presentation.ui.exhibit_listings.components.*
 import com.crop2cash.fetcher.presentation.theme.spacing
+import com.crop2cash.fetcher.util.WindowInfo
 import com.crop2cash.fetcher.util.loading.CustomCircularProgressIndicator
+import com.crop2cash.fetcher.util.rememberWindowInfo
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.ramcosta.composedestinations.annotation.Destination
@@ -50,7 +52,6 @@ fun CompanyListingsScreen(
             Column(
                 modifier = Modifier
                     .padding(top = MaterialTheme.spacing.extraLarge)
-                    .padding(top = MaterialTheme.spacing.large)
                     .fillMaxSize()
             ) {
                 SearchTextField(
@@ -61,24 +62,6 @@ fun CompanyListingsScreen(
                         )
                     }
                 )
-                Row(
-                    modifier = Modifier
-                        .padding(horizontal = MaterialTheme.spacing.medium)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    CustomSwitch(switchOn = viewModel.darkTheme) {
-                        viewModel.onEvent(
-                            ExhibitListingsEvent.OnSwitchToggleClick
-                        )
-                    }
-                    Text(
-                        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium),
-                        text = "DARK MODE: ${if (viewModel.darkTheme)"ON" else "0FF"}"
-                    )
-                }
-                Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
                 SwipeRefresh(
                     state = swipeRefreshState,
                     onRefresh = {
@@ -86,6 +69,26 @@ fun CompanyListingsScreen(
                     }
                 ) {
                     LazyColumn {
+                        item {
+                            Row(
+                                modifier = Modifier
+                                    .padding(horizontal = MaterialTheme.spacing.medium)
+                                    .fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                CustomSwitch(switchOn = viewModel.darkTheme) {
+                                    viewModel.onEvent(
+                                        ExhibitListingsEvent.OnSwitchToggleClick
+                                    )
+                                }
+                                Text(
+                                    modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium),
+                                    text = "DARK MODE: ${if (viewModel.darkTheme)"ON" else "0FF"}"
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
+                        }
                         itemsIndexed(state.exhibitList) { index, exhibit ->
                             Text(
                                 text = exhibit.title, // Ex: "iPhone 5s"
