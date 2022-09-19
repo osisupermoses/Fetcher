@@ -5,6 +5,8 @@ uses the following tools, libraries and architecture:
 
 * Kotlin - Preferred Language
 
+* The New Material Design 3
+
 * Jetpack Compose - Declarative UI
 
 * Hilt - For dependency Injection
