@@ -7,6 +7,8 @@ uses the following tools, libraries and architecture:
 
 * The New Material Design 3
 
+* Dark Theme Supported
+
 * Jetpack Compose - Declarative UI
 
 * Hilt - For dependency Injection
