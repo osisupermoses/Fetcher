@@ -9,6 +9,8 @@ uses the following tools, libraries and architecture:
 
 * Dark Theme Supported
 
+* Caching
+
 * Jetpack Compose - Declarative UI
 
 * Hilt - For dependency Injection
